@@ -1,0 +1,7 @@
+.navbar {
+    border: solid 1px black;
+}
+#input-group {
+    border: solid 1px #afafaf;
+    border-radius: 10px;
+}
