@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>Gerador de Currículos</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -15,7 +16,7 @@
 </head>
 <body>
 
-    <nav class="navbar bg-primary">
+    <nav class="navbar bg-danger">
 
         <div class="container">
             <span id="brand" class="navbar-brand ">Gerador de Currículos</span>
@@ -23,39 +24,31 @@
     </nav>
 
     <main class="mt-5 pt-4 container">
+        <h1>Dados Pessoais</h1>
         <form method="post" action="geraCurriculo.php" id="formCurriculo">
-            <div class="mb-5 col-7">
+            <div class="mb-5 col-4">
                 <label for="nome" class="form-label">Nome Completo</label>
                 <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome" required>
             </div>
             
-            <div class="mb-5 col-7">
+            <div class="mb-5 col-4">
                 <label for="foto" class="form-label">Faça o upload de uma foto sua</label>
                 <input type="file" accept="image/*" class="form-control" name="foto" id="foto" required>
             </div>
 
-            <div class="row"> 
-                <div class="mb-5 col-4">
-                    <label for="dateNasc" class="form-label">Data de Nascimento</label>
-                    <input type="date" class="form-control" name="dateNasc" id="dateNasc" required>
-                </div>
-
-                <div class="mb-5 col-3">
-                    <label for="idade" class="form-label">Idade</label>
-                    <input type="number" class="form-control" name="idade" id="idade" placeholder="Digite sua idade" required>
-                </div>
+            <div class="mb-5 col-4">
+                <label for="dateNasc" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" name="dateNasc" id="dateNasc" required>
             </div>
 
-            <div class="row">
-                <div class="mb-5 col-4">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@outlook.com" required>
-                </div>
-
-                <div class="mb-5 col-3">
+            <div class="mb-5 col-4">
                     <label for="telefone" class="form-label">Celular</label>
                     <input type="tel" class="form-control" name="telefone" placeholder="(12)34567-8900" id="telefone" maxlength="15" onkeypress="mascara(this)" required>
-                </div>
+            </div>
+
+            <div class="mb-5 col-4">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@outlook.com" required>
             </div>
 
             <div>
@@ -73,7 +66,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-danger">Gerar Currículo</button>
             
 
         </form>
