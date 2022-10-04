@@ -25,7 +25,7 @@
 
     <main class="mt-5 pt-4 container">
         <h1>Dados Pessoais</h1>
-        <form method="post" action="geraCurriculo.php" id="formCurriculo">
+        <form enctype="multipart/form-data" method="post" action="geraCurriculo.php" id="formCurriculo">
             <div class="mb-5 col-4">
                 <label for="nome" class="form-label">Nome Completo</label>
                 <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome" required>
@@ -71,7 +71,7 @@
 
         </form>
     </main>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesIndex.css">
     <script src="js/criaCampos.js"></script>
 </body>
 </html>
