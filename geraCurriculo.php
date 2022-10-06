@@ -1,8 +1,12 @@
 <?php
 $nome = $_POST['nome'];
 $dateNasc = $_POST['dateNasc'];
+$dateNascOk = new DateTime($dateNasc);
 $email = $_POST['email'];
 $telefone = $_POST['telefone'];
+$vaga = $_POST['vaga'];
+$empresaVaga = $_POST['empresaVaga'];
+$descricao = $_POST['descricao'];
 
 if(isset($_FILES['foto']))
 {
@@ -16,19 +20,25 @@ if(isset($_FILES['foto']))
 if (isset($_POST['instituicao'])){
     $instituicao = $_POST['instituicao'];
     $categoria = $_POST['categoria'];
-    $deFormacao = $_POST['deFormacao'];
-    $ateFormacao = $_POST['ateFormacao'];
 
     $totalInstituicao = count($instituicao);
+
+    $deFormacao = $_POST['deFormacao'];
+    for($i = 1; $i <= $totalInstituicao; $i++) { $deFormacaoOk[$i] = new DateTime($deFormacao[$i]); }
+    $ateFormacao = $_POST['ateFormacao'];
+    for($i = 1; $i <= $totalInstituicao; $i++) { $ateFormacaoOk[$i] = new DateTime($ateFormacao[$i]); }
 }
 
 if (isset($_POST['empresa'])){
     $empresa = $_POST['empresa'];
     $cargo = $_POST['cargo'];
-    $deProfissoes = $_POST['deProfissoes'];
-    $ateProfissoes = $_POST['ateProfissoes'];
 
     $totalProfissoes = count($empresa);
+
+    $deProfissoes = $_POST['deProfissoes'];
+    for($x = 1; $x <= $totalProfissoes; $x++) { $deProfissoesOk[$x] = new DateTime($deProfissoes[$x]); }
+    $ateProfissoes = $_POST['ateProfissoes'];
+    for($x = 1; $x <= $totalProfissoes; $x++) { $ateProfissoesOk[$x] = new DateTime($ateProfissoes[$x]); }
 }
 
 ?>
@@ -49,7 +59,7 @@ if (isset($_POST['empresa'])){
 
 </head>
 <body>
-    <div class="conteudo">
+    <div class="conteudo printable">
         <div id="dadosPessoais" class="row"> 
             <div class="col-4">
                 <img src="./images/<?= $new_name ?>" class="img img-responsive" width="200">
@@ -58,39 +68,50 @@ if (isset($_POST['empresa'])){
                 <h2 id="nome"><?= $nome ?></h2>
                 <span id="email">E-mail: <?= $email ?></span><br>
                 <span id="telefone">Telefone: <?= $telefone ?> </span><br>
-                <span id="dateNasc">Data de Nascimento: <?= $dateNasc ?> </span>
+                <span id="dateNasc">Data de Nascimento: <?= $dateNascOk->format('d/m/Y'); ?> </span>
             </div>
+        </div>
+
+        <div id="vaga">
+            <h3> <?= $vaga." - ".$empresaVaga."<br>" ?> </h3>
+        </div>
+
+        <div class="container"> 
+            <span id="descricao"><?=  $descricao ?> </span>
         </div>
 
         <div id="formacao">
             <h2 id="formacaoTitle">Formações Acadêmicas</h2>
             <?php
-                for($i = 1; $i <= $totalInstituicao; $i++)
-                {
-                    echo '<span class="spanFormacao">';
-                    printf(" • %s -", $instituicao[$i]);
-                    printf(" %s ", $categoria[$i]);
-                    printf(" ( %s ", $deFormacao[$i]);
-                    printf(" - %s )", $ateFormacao[$i]);
-                    echo '</span><br>';
-
-                }
+                if (isset($_POST['empresa'])){
+                    for($i = 1; $i <= $totalInstituicao; $i++)
+                    {
+                        echo '<span class="spanFormacao">';
+                        printf(" • %s -", $instituicao[$i]);
+                        printf(" %s ", $categoria[$i]);
+                        echo "( ".$deFormacaoOk[$i]->format('d/m/Y');
+                        echo " - ".$ateFormacaoOk[$i]->format('d/m/Y')." )";
+                        echo '</span><br>';
+                    }
+                } else echo '<span class="spanFormacao"> • Nenhuma </span>';
             ?>
         </div>
 
         <div id="profissoes">
             <h2 id="profissoesTitle">Experiências Profissionais</h2>
             <?php
-                for($x = 1; $x <= $totalProfissoes; $x++)
-                {
-                    echo '<span class="spanProfissoes">';
-                    printf(" • %s -", $empresa[$x]);
-                    printf(" %s ", $cargo[$x]);
-                    printf(" ( %s ", $deProfissoes[$x]);
-                    printf(" - %s )", $ateProfissoes[$x]);
-                    echo '</span><br>';
+                if (isset($_POST['empresa'])){
+                    for($x = 1; $x <= $totalProfissoes; $x++)
+                    {
+                        echo '<span class="spanProfissoes">';
+                        printf(" • %s -", $empresa[$x]);
+                        printf(" %s ", $cargo[$x]);
+                        echo "( ".$deProfissoesOk[$x]->format('d/m/Y');
+                        echo " - ".$ateProfissoesOk[$x]->format('d/m/Y')." )";
+                        echo '</span><br>';
 
-                }
+                    }
+                } else echo '<span class="spanFormacao"> • Nenhuma </span>';
             ?>
         </div>
         <button type="button" class="btn btn-primary nPrintable" onclick=window.print()>Baixar</button>

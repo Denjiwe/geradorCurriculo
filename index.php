@@ -26,30 +26,60 @@
     <main class="mt-5 pt-4 container">
         <h1>Dados Pessoais</h1>
         <form enctype="multipart/form-data" method="post" action="geraCurriculo.php" id="formCurriculo">
-            <div class="mb-5 col-4">
-                <label for="nome" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome" required>
+            <div class="row"> 
+                <div class="mb-5 col-4">
+                    <label for="nome" class="form-label">Nome Completo</label>
+                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome" required>
+                </div>
+
+                <div class="mb-5 col-4">
+                    <label for="dateNasc" class="form-label">Data de Nascimento</label>
+                    <input type="date" class="form-control" name="dateNasc" id="dateNasc" required>
+                </div>
             </div>
             
             <div class="mb-5 col-4">
                 <label for="foto" class="form-label">Faça o upload de uma foto sua</label>
                 <input type="file" accept="image/*" class="form-control" name="foto" id="foto" required>
             </div>
+            
 
-            <div class="mb-5 col-4">
-                <label for="dateNasc" class="form-label">Data de Nascimento</label>
-                <input type="date" class="form-control" name="dateNasc" id="dateNasc" required>
+            <div class="row"> 
+                <div class="mb-5 col-4">
+                        <label for="telefone" class="form-label">Celular</label>
+                        <input type="tel" class="form-control" name="telefone" placeholder="(12)34567-8900" id="telefone" maxlength="15" onkeypress="mascara(this)" required>
+                </div>
+
+                <div class="mb-5 col-4">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@outlook.com" required>
+                </div>
             </div>
 
-            <div class="mb-5 col-4">
-                    <label for="telefone" class="form-label">Celular</label>
-                    <input type="tel" class="form-control" name="telefone" placeholder="(12)34567-8900" id="telefone" maxlength="15" onkeypress="mascara(this)" required>
+            <div class="row"> 
+                <div class="mb-5 col-4">
+                    <label for="vaga" class="form-label">Vaga que irá se candidatar</label>
+                    <input type="text" class="form-control" name="vaga" id="vaga" placeholder="Digite a vaga que irá se candidatar" required>
+                </div>
+
+                <div class="mb-5 col-4">
+                    <label for="empresaVaga" class="form-label">Nome da Empresa</label>
+                    <input type="text" class="form-control" name="empresaVaga" id="empresaVaga" placeholder="Digite a empresa que oferta a vaga" required>
+                </div>
             </div>
 
-            <div class="mb-5 col-4">
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@outlook.com" required>
+            <div class="row">
+                <div class="mb-5 col-8">
+                    <label for="descricao" class="form-label">Descreva-se em poucas palavras</label>
+                    <textarea class="form-control" cols="30" rows="7" name="descricao" id="descricao" maxlength="400" required> </textarea>   
+                </div>
+
+                <div id="numeracao" class="col-1">
+                    <span id="contador">0</span>/400
+                </div>
             </div>
+
+            
 
             <div>
                 <h1>Formação</h1>

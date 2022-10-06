@@ -7,6 +7,12 @@ body {
 .navbar {
     border: solid 1px black;
 }
+#descricao{
+    resize: none;
+}
+#numeracao{
+    padding-top: 39px;
+}
 #input-group {
     border: solid 1px #afafaf;
     border-radius: 10px;
